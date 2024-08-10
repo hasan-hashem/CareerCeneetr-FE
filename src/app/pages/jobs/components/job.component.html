@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <!-- Services -->
+        <div id="left-list" class="col-2 sticky-top mt-4">
+            <div class="d-flex flex-column">
+                <a class="bg-second-color">
+                    <span class="rounded">-</span>
+                    <span>{{'Jobs'|translate}}</span>
+                </a>
+    
+                <a>
+                    <span class="square"></span>
+                    <span>{{'Technology and Software Development'|translate}}</span>
+                </a>
+                <a>
+                    <span class="square"></span>
+                    <span>{{'Sales and Marketing'|translate}}</span>
+                </a>
+                <a>
+                    <span class="square"></span>
+                    <span>{{'Finance and Accounting'|translate}}</span>
+                </a>
+                <a>
+                    <span class="square"></span>
+                    <span>{{'Management and Executive'|translate}}</span>
+                </a>
+            </div>
+    
+        </div>
+       
+        <div class="col-8 mt-4">
+           <div class="row">
+                <div class="col-4"  *ngFor="let job of jobList">
+                        <div class="job">
+                                 <span class="profile-pro">{{job.title| cutTwoLetters}}</span>
+                                <h3 class="job-title">{{job.title}}</h3>
+                                <div class="job-details">
+                                    {{job.description}}
+                                </div>
+                                <a [href]="job.url" target="_blank" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">More Details</a>
+                                <span class="open-position">{{job.count}} open position</span>
+                        </div>
+                </div>
+           </div>
+        </div>
+    
+    </div>
+    
+</div>
