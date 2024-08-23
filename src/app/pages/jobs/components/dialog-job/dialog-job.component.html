@@ -35,8 +35,8 @@
       <!-- Number -->
       <div class="col-sm-4">
         <label class="form-label">{{'Number of Positions' | translate}}</label>
-        <input formControlName="number" type="number" class="form-control" placeholder="e.g., 3">
-        <div *ngIf="addJobForm.get('number')?.invalid && (addJobForm.get('number')?.dirty || addJobForm.get('number')?.touched)">
+        <input formControlName="count" type="number" class="form-control" placeholder="e.g., 3">
+        <div *ngIf="addJobForm.get('count')?.invalid && (addJobForm.get('count')?.dirty || addJobForm.get('count')?.touched)">
           {{'Please enter a valid number.' | translate}}
         </div>
       </div>

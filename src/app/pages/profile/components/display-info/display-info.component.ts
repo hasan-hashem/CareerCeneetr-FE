@@ -91,10 +91,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
         )
 
     }
-    openEditJob(type:any){
+    openEditJob(type:any , id : any){
         this.matDialog.open(
             EditJobComponent, {
-            data:{type:type},
+            data:{type:type , id : id},
             width: '500px',
             enterAnimationDuration: '100ms',
             exitAnimationDuration: '100ms',

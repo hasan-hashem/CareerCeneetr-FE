@@ -23,6 +23,7 @@ import { TvlTrsmComponent } from '../pages/travel-tourism/tvl-trsm.component';
 import { ErrorInterceptor } from '../core/interceptors/error.interceptor';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
 
 //translate
 export function HttpLoaderFactory(http:HttpClient){
@@ -38,6 +39,7 @@ export function HttpLoaderFactory(http:HttpClient){
     PageErrorComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule,
     SharedModule,

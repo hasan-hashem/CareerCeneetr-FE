@@ -22,11 +22,14 @@ export class EditProjectComponent {
   readonly data = inject<DialogData>(MAT_DIALOG_DATA);
   readonly dialogRef = inject(MatDialogRef<ProfileComponent>);
   editProjectForm! : FormGroup;
-  project! : Project;
+  project = { 
+    title: '',
+    description : ''
+  };
   type: any;
   id : any;
   editProject() {
-    this.profileService.updateProject(this.id,this.editProjectForm).subscribe(res => {
+    this.profileService.updateProject(this.data.id,this.project).subscribe(res => {
             
       this.toastr.success('The project has been updated successfully', 'Career Center');
     });

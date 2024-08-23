@@ -70,7 +70,7 @@
       </p>
     </div>
     <small class="d-block text-end mt-3">
-      <a href="#">{{ "Updates" | translate }}</a>
+      
     </small>
   </div>
 
@@ -204,9 +204,9 @@
             <span class="d-block"></span>
           </div>
           <div>
-            <a style="color:#0D6EFD; margin-bottom: 10px" (click)="openEditJob('edit')" >Edit</a><br>
+            <a style="color:#0D6EFD; margin-bottom: 10px" (click)="openEditJob('edit',job.id)" >Edit</a><br>
 
-            <a style="color: #DC3545; margin-bottom: 10px" (click)="openEditJob(  'delete')">Delete</a>
+            <a style="color: #DC3545; margin-bottom: 10px" (click)="openEditJob(  'delete',job.id)">Delete</a>
           </div>
         </div>
       </div>

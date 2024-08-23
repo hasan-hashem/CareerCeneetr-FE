@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment.development";
 import { User } from "../utilities/userVm";
 import { Audit } from "../utilities/audit";
+import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -38,6 +39,32 @@ export class AdminService {
 
         return this.http.post(`${environment.apiUrl}auditing`,auditWithoutId)
     }
+    
 
+    getRole(id: string): Observable<string> {
+        return this.http.get<string>(`${environment.apiUrl}get-role/${id}`, { responseType: 'text' as 'json' });
+      }
+
+    deleteUser(id : string ) {
+       
+        return this.http.delete(`${environment.apiUrl}delete/${id}`, { responseType: 'text' });
+
+    }
+    addRole(id : string ) {
+       
+        return this.http.post(`${environment.apiUrl}add-role`,{
+            "userID": id,
+            "role": "Admin"
+          }, { responseType: 'text' });
+
+    }
+    deleteRole(id : string ) {
+       
+        return this.http.post(`${environment.apiUrl}remove-role`,{
+            "userID": id,
+            "role": "Admin"
+          }, { responseType: 'text' });
+
+    }
     
 }

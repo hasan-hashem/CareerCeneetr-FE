@@ -1,56 +1,4 @@
-// import { Component, Inject, inject } from '@angular/core';
-// import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-// import { JobComponent } from '../display-jobs/job.component';
-// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { Title } from '@angular/platform-browser';
-// import { Job } from '../../utilities/job-vm';
-// import { Observable, Subscribable } from 'rxjs';
 
-// @Component({
-//   selector: 'svs-dialog-job',
-//   templateUrl: './dialog-job.component.html',
-//   styleUrls: ['./dialog-job.component.css']
-// })
-// export class DialogJobComponent {
-//   jobForm: any;
-//   job!: Job;
-//   form: FormGroup;
-//   filteredServices: any;
-//   servicesList: any;
-//   serviceId: any;
-//   categoriesList$: Observable<undefined> | Subscribable<undefined> | Promise<undefined> | undefined;
-
-
-
-
-
-
-//   constructor(
-//     private fb: FormBuilder,
-//     public dialogRef: MatDialogRef<JobComponent>,
-//     @Inject(MAT_DIALOG_DATA) public data: any
-//   ) {
-//     this.form = this.fb.group({
-//       title: ['', Validators.required],
-//       description: ['', Validators.required],
-//       number: [null, [Validators.required, Validators.min(0)]],
-//       url: ['', [Validators.required, Validators.pattern('https?://.+')]]
-//     });
-//   }
-
-//   onSubmit(): void {
-//     if (this.form.valid) {
-//       this.dialogRef.close(this.form.value);
-//     }
-//   }
-//   onClickCategory(event: any) {
-//     var id = event.target.value;
-//     this.filteredServices = this.servicesList.filter((x: { categoryId: any; }) => x.categoryId == id)
-//     console.log();
-//     this.serviceId = this.filteredServices[0].id;
-//   }
-
-// }
 
 
 
@@ -93,7 +41,7 @@ export class DialogJobComponent implements OnInit {
       
       title: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(10)]],
-      number: ['', [Validators.required, Validators.min(1)]],
+      count: ['', [Validators.required, Validators.min(1)]],
       url: ['', [Validators.required, Validators.pattern('https?://.+')]]
     });
     

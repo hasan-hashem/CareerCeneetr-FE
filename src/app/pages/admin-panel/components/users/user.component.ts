@@ -4,6 +4,7 @@ import { EMPTY, Observable, Subscription, catchError, mergeMap } from "rxjs";
 import { environment } from "src/environments/environment.development";
 import { HttpClient } from "@angular/common/http";
 import { firstValueFrom } from "rxjs";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
     selector: 'users',
@@ -12,52 +13,64 @@ import { firstValueFrom } from "rxjs";
 })
 
 export class UserComponent implements OnInit {
+    roles: { [key: string]: string } = {};
     /**
      *
      */
-    constructor(private adminService: AdminService, private http: HttpClient) {}
-  
+    constructor(private adminService: AdminService,
+      private toastr: ToastrService,
+       private http: HttpClient) {}
+    r : any ;
     users$ = this.adminService.users$;
     // roles$ = this.http.get(`${environment.apiUrl}get/role`);
   
-    ngOnInit(): void {}
+    ngOnInit(): void {
+
+      this.users$.subscribe(users => {
+        users.forEach(user => {
+          this.getUserRole(user.id);
+        });
+      });
+    }
   
     addRole(userId: any) {
-      try {
-        this.http.post(`${environment.apiUrl}/add-role`, {
-          userID: userId,
-          role: 'Admin',
-        });
-      } catch (e) {
-        console.error(e);
-      }
+      
+
+
+      this.adminService.addRole(userId).subscribe(
+        response => {
+          this.toastr.success('The user is now Admin', 'Career Center'); // هنا سيكون response نصًا مثل "User deleted successfully"
+        }
+      );
     }
   
     deleteUser(userId: any) {
-      try {
-        this.http.delete(`${environment.apiUrl}/delete/${userId}`);
-      } catch (e) {
-        console.error(e);
-      }
+      this.adminService.deleteUser(userId).subscribe(
+        response => {
+          this.toastr.success(response, 'Career Center'); 
+        },
+        error => {
+          this.toastr.error('Failed to delete user', 'Career Center');
+        }
+      );
     }
   
     deleteRole(userId: any) {
-      try {
-        this.http.post(`${environment.apiUrl}/remove-role`, {
-          userID: userId,
-          role: 'Admin',
-        });
-      } catch (e) {
-        console.error(e);
-      }
+      this.adminService.deleteRole(userId).subscribe(
+        response => {
+          this.toastr.success('The Admin is now a User', 'Career Center'); 
+        }
+      );
     }
   
     getUserRole(userId: any) {
-        
-     
-       let res =  this.http.get(`${environment.apiUrl}get-role/${userId}`);
-       console.log(res)
-       return res ;
-     
+        this.adminService.getRole(userId).subscribe(
+        response => {
+          this.roles[userId] = response;
+        },
+        error => {
+          this.toastr.error('The user role can not show', 'Career Center');
+        }
+      );
     }
   }

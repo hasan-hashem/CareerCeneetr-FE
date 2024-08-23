@@ -15,7 +15,7 @@
           <tr>
             <td class="text-start"><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>{{user.email}}</td>
             <th scope="row" class="text-center">{{user.userName}}</th>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>{{getUserRole(user.id)   }}</td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>{{roles[user.id!] || 'Loading...'  }}</td>
             <td>
             <button class="btn btn-sm btn-danger me-1" (click)="deleteUser(user.id)">{{'Delete User'| translate}}</button>
             <button class="btn btn-sm btn-primary me-1" (click)="addRole(user.id)">{{'Add Role'| translate}} </button>

@@ -44,6 +44,7 @@ export class ProfileService {
 
     }
     updateJob(id : any , updateJob : any) {
+      console.log(updateJob)
         return this.http.put(`${environment.apiUrl}job/${id}`,updateJob );
     }
     deleteJob(id : string ) {
